@@ -107,7 +107,11 @@ void ACO_knapsack(
 	best_global_solution.profit = 0;
 	
 	if (!procid) {
-		printf("Items,Profit,True Profit,Weight,Patience,Iteration\n");
+		for (i = 0; i < item_count; i++)
+		{
+			printf("%d,", i);
+		}
+		printf("Profit,True Profit,Weight,Patience,Iteration\n");
 	}
 
 	while (counter < patience) {
@@ -218,18 +222,20 @@ void ACO_knapsack(
 			for (j = 0; j < knapsack_weights_count; j++) {
 				current_knapsack_weights_capacities[j] = 0;
 			}
-			printf("{ ");
+			
 			for (i = 0; i < item_count; i++) {
 				if (best_global_is_in_knapsack[i]) {
-					printf("%d ", i);
+					printf("1,", i);
 					for (j = 0; j < knapsack_weights_count; j++) {
 						current_knapsack_weights_capacities[j] += knapsack_weights_matrix[j][i];
 					}
 					sum += profits[i];
+				} else {
+					printf("0,", i);
 				}
 			}
 
-			printf("},%d,%d,", best_global_solution.profit, (int)sum);
+			printf("%d,%d,", best_global_solution.profit, (int)sum);
 			
 			for (i = 0; i < knapsack_weights_count; i++) {
 				printf("%d,", current_knapsack_weights_capacities[i]);
