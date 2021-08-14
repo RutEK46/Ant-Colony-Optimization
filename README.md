@@ -1,4 +1,4 @@
-# Ant-Colony-Optimalization
+# Ant-Colony-Optimization
 
 To compile use mpicc ACO_knapsackMPI.c
 
